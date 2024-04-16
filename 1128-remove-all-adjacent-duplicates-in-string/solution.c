@@ -1,5 +1,5 @@
 char* removeDuplicates(char* s) {
-    char *st=malloc(strlen(s));
+    char *st=malloc(strlen(s)+1);
     int top=-1;
     //int size=strlen(s);
     st[++top]=s[0];
