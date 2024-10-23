@@ -29,7 +29,7 @@ public:
             total.push_back(sum);
         }
         root->val=0;
-        int m=0;
+        int m=1;
         q.push(root);
         while(!q.empty()){
             int sz=q.size();
@@ -38,11 +38,11 @@ public:
                 int sibsum=((node->left)?node->left->val:0)+((node->right)?node->right->val:0);
                 q.pop();
                 if(node->left){
-                    node->left->val=abs(total[m+1]-sibsum);
+                    node->left->val=abs(total[m]-sibsum);
                     q.push(node->left);
                 }
                 if(node->right){
-                    node->right->val=abs(total[m+1]-sibsum);
+                    node->right->val=abs(total[m]-sibsum);
                     q.push(node->right);
                 }
             }
