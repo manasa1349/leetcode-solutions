@@ -1,11 +1,11 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        vector<char>li;
+        string li="";
         int n=s.size();
         for(int i=0;i<n;i++){
             if(isalnum(s[i])){
-                li.push_back(tolower(s[i]));
+                li+=(tolower(s[i]));
             }
         }
         int m=li.size();
