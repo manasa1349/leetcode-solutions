@@ -1,10 +1,7 @@
 class Solution {
 public:
-    int func(int n){
-        return (n*(n-1));
-    }
     int tupleSameProduct(vector<int>& nums) {
-        map<int,int>mp;
+        unordered_map<int,int>mp;
         int n=nums.size();
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
@@ -16,7 +13,7 @@ public:
         for(auto it:mp){
             //cout<<it.first<<" "<<it.second<<" "<<ans<<endl;
             if(it.second>1){
-                ans+=(func(it.second)*4);
+                ans+=(8*(it.second*(it.second-1)/2));
             }
         }
         return ans;
