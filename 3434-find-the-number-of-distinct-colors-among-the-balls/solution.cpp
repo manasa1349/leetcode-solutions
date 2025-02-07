@@ -1,8 +1,8 @@
 class Solution {
 public:
     vector<int> queryResults(int limit, vector<vector<int>>& query) {
-        map<int,int>mp;
-        map<int,int>col;
+        unordered_map<int,int>mp;
+        unordered_map<int,int>col;
         vector<int>res;
         for(int i=0;i<query.size();i++){
             int b=query[i][0];
