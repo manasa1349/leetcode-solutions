@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<string>res;
+    /*vector<string>res;
     void func(string s,int n){
         if(s.size()==n){
             res.push_back(s);
@@ -8,9 +8,9 @@ public:
         }
         func(s+'0',n);
         func(s+'1',n);
-    }
+    }*/
     string findDifferentBinaryString(vector<string>& nums) {
-        func("0",nums.size());
+        /*func("0",nums.size());
         func("1",nums.size());
         unordered_map<string,int>mp;
         for(int i=0;i<res.size();i++){
@@ -24,6 +24,11 @@ public:
                 return it.first;
             }
         }
-        return "";
+        return "";*/
+        string ans = "";
+        for (int i = 0; i < nums.size(); i++) {
+            ans += (nums[i][i] == '0') ? '1' : '0';
+        }
+        return ans;
     }
 };
