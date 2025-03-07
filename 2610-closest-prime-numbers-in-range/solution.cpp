@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> closestPrimes(int left, int right) {
-        vector<bool>v(1e6+1,true);
+        vector<bool>v(right+1,true);
         v[0]=v[1]=false;
         for(int i=2;i*i<v.size();i++){
             if(v[i]){
