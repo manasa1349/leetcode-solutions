@@ -11,21 +11,12 @@
 class Solution {
 public:
     int getDecimalValue(ListNode* head) {
-        struct ListNode* temp = head;
-        int cnt = 0;
-        while (temp) {
-            temp = temp->next;
-            cnt++;
-        }
-        int ans = 0;
-        cout << cnt << endl;
+        int result = 0;
         while (head) {
-            ans += (pow(2, cnt - 1) * int(head->val));
-            cnt--;
+            result =
+                (result << 1) | head->val;
             head = head->next;
         }
-        cout << cnt << endl;
-
-        return ans;
+        return result;
     }
 };
