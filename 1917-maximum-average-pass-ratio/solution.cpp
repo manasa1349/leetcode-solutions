@@ -1,22 +1,26 @@
 class Solution {
 public:
-    double cmp(int a,int b){
-        return (double(a+1)/(b+1))-(double(a)/b);
-    }
+    struct compare {
+        bool operator()(const pair<int,int>& c1, const pair<int,int>& c2) {
+            double a1=(double)(c1.first+1)/(c1.second+1) -(double)(c1.first)/(c1.second);
+            double a2=(double)(c2.first+1)/(c2.second+1) -(double)(c2.first)/(c2.second);
+            return a1<a2;
+        }
+    };
     double maxAverageRatio(vector<vector<int>>& classes, int extraStudents) {
-        priority_queue<tuple<double,int,int>> pq;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,compare> pq;
         int n=classes.size();
         for(int i=0;i<n;i++){
-            pq.push({cmp(classes[i][0],classes[i][1]),classes[i][0],classes[i][1]});
+            pq.push({classes[i][0],classes[i][1]});
         }
         while(extraStudents--){
-            auto [g,p,t]=pq.top();
+            auto [p,t]=pq.top();
             pq.pop();
-            pq.push({cmp(p+1,t+1),p+1,t+1});
+            pq.push({p+1,t+1});
         }
         double ans=0.0;
         while(!pq.empty()){
-            auto [g,p,t]=pq.top();
+            auto [p,t]=pq.top();
             pq.pop();
             ans+=(double(p)/t);
         }
