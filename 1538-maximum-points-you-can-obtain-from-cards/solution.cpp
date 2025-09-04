@@ -6,6 +6,7 @@ public:
         for(int i=0;i<k;i++){
             lsum+=a[i];
         }
+        if(a.size()==k) return lsum;
         mx=lsum;
         int j=a.size()-1;
         for(int i=k-1;i>=0;i--){
