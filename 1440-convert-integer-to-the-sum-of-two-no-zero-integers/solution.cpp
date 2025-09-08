@@ -1,21 +1,13 @@
 class Solution {
 public:
-    bool check(int n){
-        while(n>0){
-            if(n%10==0){
-                return false;
-            }
-            n/=10;
-        }
-        return true;
-    }
     vector<int> getNoZeroIntegers(int n) {
-        int i;
-        for(i=1;i<n;i++){
-            if(check(i) && check(n-i)){
-                break;
-            }
+        int a = 1, b = n - 1;
+        while (to_string(a).find('0') != string::npos || 
+               to_string(b).find('0') != string::npos) {
+            a++;
+            b = n - a;
         }
-        return {i,n-i};
+        return {a, b};
     }
 };
+
