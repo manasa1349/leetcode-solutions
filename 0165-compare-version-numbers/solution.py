@@ -2,12 +2,12 @@ class Solution:
     def compareVersion(self, version1: str, version2: str) -> int:
         a1=version1.split('.')
         a2=version2.split('.')
-        for i in a1:
-            if i.count('0')>1:
-                i=i.lstrip('0')
-        for i in a2:
-            if i.count('0')>1:
-                i=i.lstrip('0')
+        # for i in a1:
+        #     if i.count('0')>1:
+        #         i=i.lstrip('0')
+        # for i in a2:
+        #     if i.count('0')>1:
+        #         i=i.lstrip('0')
         n1=len(a1)
         n2=len(a2)
         k=min(n1,n2)
