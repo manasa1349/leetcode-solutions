@@ -6,6 +6,9 @@ public:
             if(i==original){
                 original*=2;
             }
+            if(i>original){
+                break;
+            }
         }
         return original;
     }
