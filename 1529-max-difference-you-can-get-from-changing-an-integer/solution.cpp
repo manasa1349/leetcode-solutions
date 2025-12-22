@@ -16,18 +16,14 @@ public:
         }
         char mnelmnt=num[mni];
         char mxelmnt=num[mxi];
-        string maxNum = num;
-        string minNum = num;
+        int k=num[0];
         for(int i = 0; i < num.size(); i++){
-            if(maxNum[i] == mxelmnt) maxNum[i] = '9';
-            if(minNum[i] == mnelmnt){
-                if(mnelmnt == num[0])
-                    minNum[i] = '1';
-                else
-                    minNum[i] = '0';
-            }
+            char mx=(num[i]==mxelmnt)?'9':num[i];
+            char mn=(num[i] == mnelmnt)?(
+                        (mnelmnt == k)?'1':'0'
+                    ):num[i];
+            num[i]=((mx-'0')-(mn-'0'))+'0';
         }
-
-        return stoi(maxNum) - stoi(minNum);
+        return stoi(num);
     }
 };
