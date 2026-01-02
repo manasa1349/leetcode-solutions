@@ -2,20 +2,15 @@ class Solution {
 public:
     string largestNumber(vector<int>& a) {
         int n=a.size();
+        vector<string>arr(n);
         for(int i=0;i<n;i++){
-            for(int j=i+1;j<n;j++){
-                if(to_string(a[j])+to_string(a[i]) > to_string(a[i])+to_string(a[j])){
-                    swap(a[i],a[j]);
-                }
-            }
+            arr[i]=to_string(a[i]);
         }
-        string s="";
-        if(a[0]==0){
-            return "0";
-        }
-        for(int i=0;i<n;i++){
-            s+=to_string(a[i]);
-        }
-        return s;
+        sort(arr.begin(),arr.end(),[](string a,string b){
+            return a+b>b+a;
+        });
+        if(arr[0]=="0") return "0";
+        string ans=accumulate(arr.begin(),arr.end(),string(""));
+        return ans;
     }
 };
