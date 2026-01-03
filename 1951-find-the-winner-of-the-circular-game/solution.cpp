@@ -1,22 +1,18 @@
 class Solution {
 public:
+    int func(vector<int>&arr,int k,int i){
+        if(arr.size()==1){
+            return arr[0];
+        }
+        i = ((i + k-1) % arr.size());
+        arr.erase(arr.begin()+i);
+        return func(arr,k,i);
+    }
     int findTheWinner(int n, int k) {
-        queue<int>q;
-        for(int i=1;i<=n;i++){
-            q.push(i);
-        }
-        int cnt=0;
-        while(q.size()>1){
-            int m=q.front();
-            cnt++;
-            if(cnt==k){
-                q.pop();
-                cnt=0;
-            }else{
-                q.pop();
-                q.push(m);
-            }
-        }
-        return q.front();
+        vector<int>arr;
+        arr.resize(n);
+        iota(arr.begin(), arr.end(), 1);
+        int ans=func(arr,k,0);
+        return ans;
     }
 };
