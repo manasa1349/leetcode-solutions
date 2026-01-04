@@ -2,16 +2,19 @@ class Solution {
 public:
     int func(int n){
         int b=-1,a=-2;
-        set<int>ans;
+        vector<int>ans;
         int cnt=0;
         for(int i=1;i<=n;i++){
             if(b==i || a==n/i || a==b || cnt>4){
                 break;
             }
             if(n%i==0){
-                ans.insert(i);
-                ans.insert(n/i);
-                cnt+=2;
+                ans.push_back(i);
+                if(i!=(n/i)){
+                    ans.push_back(n/i);
+                    cnt++;
+                }
+                cnt++;
             }
             a=i;
             b=n/i;
