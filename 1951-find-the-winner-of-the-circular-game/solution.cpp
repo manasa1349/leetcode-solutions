@@ -9,9 +9,10 @@ public:
         return func(arr,k,i);
     }
     int findTheWinner(int n, int k) {
-        vector<int>arr;
-        arr.resize(n);
-        iota(arr.begin(), arr.end(), 1);
+        vector<int>arr(n);
+        for(int i=0;i<n;i++){
+            arr[i]=i+1;
+        }
         int ans=func(arr,k,0);
         return ans;
     }
