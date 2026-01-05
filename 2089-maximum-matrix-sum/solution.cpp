@@ -4,24 +4,21 @@ public:
         long long sum=0;
         long long n=arr.size();
         long long m=arr[0].size();
-        long long ncnt=0,zcnt=0;
+        long long ncnt=0;
         int min=INT_MAX;
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                sum+=abs(arr[i][j]);
+                int val=abs(arr[i][j]);
+                sum+=val;
                 if(arr[i][j]<0){
                     ncnt++;
                 }
-                if(arr[i][j]==0){
-                    zcnt++;
-                }
-                if(abs(arr[i][j])<min){
-                    min=abs(arr[i][j]);
-                    // sym=(arr[i][j]<=0);
+                if(val<min){
+                    min=val;
                 }
             }
         }
-        if(ncnt==0 || ncnt%2==0|| zcnt!=0){
+        if(ncnt==0 || ncnt%2==0){
             return sum;
         }
         return sum-min-min;
