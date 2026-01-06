@@ -16,7 +16,10 @@ public:
         q.push(root);
         int sum=0;
         vector<int>arr;
+        int l=0,ans=0;
+        int maxSum=INT_MIN;
         while(!q.empty()){
+            l++;
             int n=q.size();
             sum=0;
             for(int i=0;i<n;i++){
@@ -30,9 +33,12 @@ public:
                     q.push(node->right);
                 }
             }
-            arr.push_back(sum);
+            // arr.push_back(sum);
+            if(sum>maxSum){
+                maxSum=sum;
+                ans=l;
+            }
         }
-        int ans=max_element(arr.begin(),arr.end())-arr.begin();
-        return ans+1;
+        return ans;
     }
 };
