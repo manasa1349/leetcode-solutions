@@ -16,21 +16,18 @@ public:
         if(!node) return 0;
         int l=change(node->left);
         int r=change(node->right);
-        int value=node->val;
-        node->val=value+l+r;
+        node->val=node->val+l+r;
         return node->val;
     }
     void func(TreeNode* root,long long &maxpro){
         if(!root) return;
         if(root->left){
             long long k1=root->left->val;
-            long long k2=root->val;
             maxpro=max(maxpro,k1*(sum-k1));
             func(root->left,maxpro);
         }
         if(root->right){
             long long k1=root->right->val;
-            long long k2=root->val;
             maxpro=max(maxpro,k1*(sum-k1));
             func(root->right,maxpro);
         }
