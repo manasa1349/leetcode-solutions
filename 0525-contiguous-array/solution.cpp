@@ -16,7 +16,8 @@ public:
         for(auto i:mp){
             vector<int>arr=i.second;
             if(i.first!=0){
-                int val=*max_element(arr.begin(),arr.end())-*min_element(arr.begin(),arr.end());
+                sort(arr.begin(),arr.end());
+                int val=max(ans,arr.back()-arr.front());
                 ans=max(ans,val);
             }else{
                 int val=*max_element(arr.begin(),arr.end());
