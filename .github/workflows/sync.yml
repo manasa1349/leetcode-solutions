@@ -1,0 +1,27 @@
+name: Sync Leetcode
+
+on:
+  workflow_dispatch:   # manual run
+  schedule:
+    - cron: "0 8 * * 6"   # every Saturday
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set Git identity
+        run: |
+          git config --global user.name "manasa1349"
+          git config --global user.email "charmymanasa@gmail.com"
+
+      - name: Sync LeetCode submissions
+        uses: joshcai/leetcode-sync@v1.7
+        with:
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          filter-duplicate-secs: 0
