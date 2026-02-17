@@ -9,11 +9,10 @@ public:
         return true;
     }
     int minEatingSpeed(vector<int>& arr, int k) {
-        sort(arr.begin(),arr.end());
         int n=arr.size();
         long long l=1;
-        long long h=arr[n-1];
-        int res=arr[n-1];
+        long long h=*max_element(arr.begin(),arr.end());
+        int res=(int)h;
         while(l<=h){
             long long mid=(l+h)/2;
             if(check(arr,mid,k)){
