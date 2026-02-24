@@ -19,7 +19,7 @@ public:
             if(ds.size()>0){
                 ans += stoi(ds, nullptr, 2);
             }
-            // ds.pop_back();
+            ds.pop_back();
             return;
         }
         func(root->left,ds);
