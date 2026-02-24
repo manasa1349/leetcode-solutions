@@ -16,10 +16,9 @@ public:
         if(!root) return;
         ds+=to_string(root->val);
         if(!root->left && !root->right){
-            if(ds.size()>0){
+            if(!ds.empty()){
                 ans += stoi(ds, nullptr, 2);
             }
-            ds.pop_back();
             return;
         }
         func(root->left,ds);
