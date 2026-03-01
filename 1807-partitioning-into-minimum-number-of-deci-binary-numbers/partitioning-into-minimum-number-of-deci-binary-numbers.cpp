@@ -1,7 +1,16 @@
 class Solution {
 public:
     int minPartitions(string n) {
-       sort(n.begin(),n.end());
-       return n.back()-'0';
+       int maxi=0;
+        for(int i=0;i<n.size();i++){
+            int val=n[i]-'0';
+            if(val>maxi){
+                maxi=val;
+            }
+            if(maxi==9){
+                break;
+            }
+        }
+        return maxi;
     }
 };
