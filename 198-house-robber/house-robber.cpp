@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int func(vector<int>&nums,int idx){
+    int func(vector<int>&nums){
         int n=nums.size();
         vector<int>dp(n+2,-1);
         dp[n+1]=0;
@@ -11,6 +11,6 @@ public:
         return dp[0];
     }
     int rob(vector<int>& nums) {
-        return func(nums,0);
+        return func(nums);
     }
 };
