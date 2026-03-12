@@ -12,13 +12,12 @@
 class Solution {
 public:
     bool func(TreeNode* r1,TreeNode *r2){
-        if(!r1 && !r2) return true;
-        if(!r1 || !r2) return false;
-        // if((r1->left->val != r2->right->val) || (r2->left->val != r1->right->val)){
-        //     return false;
-        // }
-        if(r1->val!=r2->val) return false;
-        return func(r1->left,r2->right)&&func(r1->right,r2->left);
+        if(!r1 && !r2) return true; //both empty
+        if(!r1 || !r2) return false; //contradict 1 empty 1 not
+        if(r1->val!=r2->val) return false; //here we are checking
+                                           //(r1->left,r2->right),
+                                           //(r1->right,r2->left)
+        return func(r1->left,r2->right) && func(r1->right,r2->left);
     }
     bool isSymmetric(TreeNode* root) {
         return func(root,root);
