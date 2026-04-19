@@ -9,6 +9,7 @@ public:
                 j++;
             }else{
                 i++;
+                if (i > j) j = i; //can consider but submitted without this
             }
         }
         return ans;
