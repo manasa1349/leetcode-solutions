@@ -1,51 +1,33 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
-        if (t.empty()) return "";
-
-        unordered_map<char, int> need, window;
-
-        // build need map
-        for (char c : t) {
-            need[c]++;
+        unordered_map<char,int>tmp,mp;
+        if(t.size()<1) return "";
+        for(int i=0;i<t.size();i++){
+            tmp[t[i]]++;
         }
-
-        int have = 0;
-        int needCount = need.size();
-
-        int l = 0;
-        int minLen = INT_MAX;
-        int start = 0;
-
-        for (int r = 0; r < s.size(); r++) {
-            char c = s[r];
-            window[c]++;
-
-            // check if this char satisfies requirement
-            if (need.count(c) && window[c] == need[c]) {
-                have++;
+        int need_letters=tmp.size();
+        int have_letters=0;
+        int l=0,r=0,n=s.size();
+        int start=0,len=INT_MAX;
+        while(r<n){
+            mp[s[r]]++;
+            if(tmp.count(s[r]) && mp[s[r]]==tmp[s[r]]){
+                have_letters++;
             }
-
-            // shrink window when valid
-            while (have == needCount) {
-                // update answer
-                if ((r - l + 1) < minLen) {
-                    minLen = r - l + 1;
-                    start = l;
+            while(need_letters==have_letters){
+                if(r-l+1 < len){
+                    start=l;
+                    len=r-l+1;
                 }
-
-                // remove left character
-                char leftChar = s[l];
-                window[leftChar]--;
-
-                if (need.count(leftChar) && window[leftChar] < need[leftChar]) {
-                    have--;
+                mp[s[l]]--;
+                if(tmp.count(s[l]) && mp[s[l]]<tmp[s[l]]){
+                    have_letters--;
                 }
-
                 l++;
             }
+            r++;
         }
-
-        return (minLen == INT_MAX) ? "" : s.substr(start, minLen);
+        return len==INT_MAX?"":s.substr(start,len);
     }
 };
