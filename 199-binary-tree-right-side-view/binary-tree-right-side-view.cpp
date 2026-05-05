@@ -18,11 +18,12 @@ public:
         q.push(root);
         while(!q.empty()){
             int sz=q.size();
-            vector<int>level;
             for(int i=0;i<sz;i++){
                 TreeNode *node=q.front();
-                level.push_back(node->val);
                 q.pop();
+                if(i==sz-1){
+                    ans.push_back(node->val);
+                }
                 if(node->left){
                     q.push(node->left);
                 }
@@ -30,7 +31,6 @@ public:
                     q.push(node->right);
                 }
             }
-            ans.push_back(level.back());
         }
         return ans;
     }
