@@ -9,7 +9,7 @@ public:
             mp[s[r]]++;
             maxfreq=max(maxfreq,mp[s[r]]);
             while((r-l+1)-maxfreq>k){
-                maxfreq=max(maxfreq,mp[s[l]]);
+                // maxfreq=max(maxfreq,mp[s[l]]);
                 mp[s[l]]--;
                 if(mp[s[l]]==0){
                     mp.erase(s[l]);
