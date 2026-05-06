@@ -7,17 +7,19 @@ public:
         if(i<0 || i>board.size()-1 || j<0 || j>board[0].size()-1){
             return false;
         }
-        if(board[i][j]!=word[idx]){
+        if(board[i][j]==word[idx]){
+            idx++;
+        }else{
             return false;
         }
 
         char val=board[i][j];
         board[i][j]='.';
         bool ans=
-           func(board,word,idx+1,i-1,j)
-        || func(board,word,idx+1,i+1,j)
-        || func(board,word,idx+1,i,j-1)
-        || func(board,word,idx+1,i,j+1);
+           func(board,word,idx,i-1,j)
+        || func(board,word,idx,i+1,j)
+        || func(board,word,idx,i,j-1)
+        || func(board,word,idx,i,j+1);
         board[i][j]=val;
         return ans;
     }
