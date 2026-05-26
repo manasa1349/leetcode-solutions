@@ -1,4 +1,4 @@
-<p>You are given a string <code>word</code>. A letter is called <strong>special</strong> if it appears <strong>both</strong> in lowercase and uppercase in <code>word</code>.</p>
+<h2><a href="https://leetcode.com/problems/count-the-number-of-special-characters-i">Count the Number of Special Characters I</a></h2> <img src='https://img.shields.io/badge/Difficulty-Easy-brightgreen' alt='Difficulty: Easy' /><hr><p>You are given a string <code>word</code>. A letter is called <strong>special</strong> if it appears <strong>both</strong> in lowercase and uppercase in <code>word</code>.</p>
 
 <p>Return the number of<em> </em><strong>special</strong> letters in<em> </em><code>word</code>.</p>
 
