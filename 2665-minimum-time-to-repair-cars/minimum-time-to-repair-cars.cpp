@@ -3,7 +3,7 @@ public:
     bool check(long long t,vector<int>&ranks,int cars){
         long long car=0;
         for(long long i=0;i<ranks.size();i++){
-            car+=(long long)sqrt(t/ranks[i]);
+            car+=sqrt(t/ranks[i]);
             if(car>=cars) return true;
         }
         return false;
