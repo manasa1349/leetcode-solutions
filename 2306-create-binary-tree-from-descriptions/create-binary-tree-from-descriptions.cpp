@@ -15,16 +15,17 @@ public:
         unordered_map<int,TreeNode*>mp;
         unordered_set<int>child;
         for(int i=0;i<arr.size();i++){
-            //if parent or child node not created till now
-            //create them
-            if(mp.find(arr[i][0])==mp.end()){
-                mp[arr[i][0]]=new TreeNode(arr[i][0]);
-            }
-            if(mp.find(arr[i][1])==mp.end()){
-                mp[arr[i][1]]=new TreeNode(arr[i][1]);
-            }
-            
-            //attach parent, child either l or r
+            //if parent or child node not created till now then create them
+            // if(mp.find(arr[i][0])==mp.end()){
+            //     mp[arr[i][0]]=new TreeNode(arr[i][0]);
+            // }
+            // if(mp.find(arr[i][1])==mp.end()){
+            //     mp[arr[i][1]]=new TreeNode(arr[i][1]);
+            // }
+            mp.try_emplace(arr[i][0], new TreeNode(arr[i][0]));
+            mp.try_emplace(arr[i][1], new TreeNode(arr[i][1]));
+
+            //attach parent and child either l or r
             if(arr[i][2]==1){
                 mp[arr[i][0]]->left=mp[arr[i][1]];
             }else{
@@ -37,7 +38,7 @@ public:
         }
         for(int i=0;i<arr.size();i++){
             if(child.find(arr[i][0])==child.end()){
-                
+
                 return mp[arr[i][0]];
             }
         }
