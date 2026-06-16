@@ -1,10 +1,11 @@
 class Solution {
 public:
     string processStr(string s) {
-        string res="";
+        string res;
+        res.reserve(s.size());
         for(auto i:s){
             if(i=='*'){
-                if(res!="")res.pop_back();
+                if(!res.empty())res.pop_back();
             }else if(i=='#'){
                 res+=res;
             }else if(i=='%'){
