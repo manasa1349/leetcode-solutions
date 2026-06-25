@@ -7,8 +7,10 @@ public:
             for(int j=i;j<n;j++){
                 if(nums[j]==target){
                     cnt++;
+                }else{
+                    cnt--;
                 }
-                if(2*cnt>(j-i+1)){
+                if(cnt>0){
                     ans++;
                 }
             }
