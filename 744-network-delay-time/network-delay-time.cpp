@@ -34,7 +34,7 @@ public:
         int ans=INT_MIN;
         for(int i=1;i<=n;i++){
             if(dist[i]==INT_MAX) return -1;
-            if(i==k) continue;
+            //the last node receives it → maximum of those shortest distances
             ans=max(dist[i],ans);
         }
         return ans;
