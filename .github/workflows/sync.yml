@@ -1,32 +1,25 @@
-name: Import LeetCode History
+name: Sync Leetcode
 
 on:
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set Git identity
         run: |
-          git config user.name "manasa1349"
-          git config user.email "charmymanasa@gmail.com"
+          git config --global user.name "manasa1349"
+          git config --global user.email "charmymanasa@gmail.com"
 
-      - name: Import LeetCode history
-        run: python scripts/import_leetcode_history.py
-        env:
-          LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
-          LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
-
-      - name: Push changes
-        run: |
-          git push origin main
+      - name: Sync LeetCode submissions
+        uses: joshcai/leetcode-sync@v1.7
+        with:
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          filter-duplicate-secs: 0
